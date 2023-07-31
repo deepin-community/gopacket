@@ -1,5 +1,162 @@
-template-repository (1.0-1) unstable; urgency=medium
+gopacket (1.1.19-3) unstable; urgency=medium
 
-  * Initial release
+  * Team upload.
+  * Update maintainer address to team+pkg-go@tracker.debian.org
+  * Update section to golang
+  * Update Standards-Version to 4.6.2 (no changes)
+  * Add autopkgtest-pkg-go
+  * Remove obsoleted install file
+  * Simplify d/rules with dh-golang options
+  * Simplify pattern in uscan watch file
+  * Add patch to skip comparing libpcap output in TestBPFInstruction
+    (Closes: #1028841)
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Shengjing Zhu <zhsj@debian.org>  Wed, 08 Feb 2023 15:27:56 +0800
+
+gopacket (1.1.19-2) unstable; urgency=medium
+
+  * Team upload.
+  * Update watchfile to track tags instead of releases.
+
+ -- Sascha Steinbiss <satta@debian.org>  Fri, 27 May 2022 12:01:22 +0200
+
+gopacket (1.1.19-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+  * Use debhelper 13,
+  * Set Rules-Requires-Root.
+
+ -- Sascha Steinbiss <satta@debian.org>  Wed, 06 Jan 2021 12:11:07 +0100
+
+gopacket (1.1.17-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release, fixing FTBFS as well.
+    Closes: #952316
+  * Extend patches to add pfring flag to more source files.
+  * Make sure all test pcaps are copied.
+
+ -- Sascha Steinbiss <satta@debian.org>  Wed, 29 Apr 2020 22:02:40 +0200
+
+gopacket (1.1.14-3) unstable; urgency=medium
+
+  [ Alexandre Viau ]
+  * Point Vcs-* urls to salsa.debian.org.
+
+  [ Hilko Bengen ]
+  * Add libpcap0.8-dev dependency, thanks to Robert Haist (Closes: 816519)
+  * Bump Debhelper compat level
+  * Replace dh_install --fail-missing
+  * Bump Standards-Version
+
+ -- Hilko Bengen <bengen@debian.org>  Tue, 05 Feb 2019 18:09:12 +0100
+
+gopacket (1.1.14-2) unstable; urgency=medium
+
+  * Team upload.
+  * Set XS-Go-Import-Path
+
+ -- Michael Stapelberg <stapelberg@debian.org>  Fri, 09 Feb 2018 17:12:04 +0100
+
+gopacket (1.1.14-1) unstable; urgency=medium
+
+  * New upstream version 1.1.14
+  * Bump Standards-Version, fix Vcs-Browser URL
+
+ -- Hilko Bengen <bengen@debian.org>  Sun, 12 Nov 2017 16:33:19 +0100
+
+gopacket (1.1.13-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 1.1.13
+  * Modernize package: DH compat level, Standards-Version
+  * Update build dependencies
+
+ -- Hilko Bengen <bengen@debian.org>  Sat, 02 Sep 2017 22:46:22 +0200
+
+gopacket (1.1.12-2) unstable; urgency=medium
+
+  * Team upload.
+  * Use DEB_HOST_GNU_TYPE to fix building on i386.
+    Closes: #860692
+
+ -- Sascha Steinbiss <satta@debian.org>  Wed, 26 Apr 2017 10:00:35 +0200
+
+gopacket (1.1.12-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [Paul Tagliamonte]
+  * Use a secure transport for the Vcs-Git URL
+
+  [Sascha Steinbiss]
+  * New upstream release.
+    Closes: #830433
+  * Fix Vcs-Browser URL.
+  * Bump Standards-Version.
+  * Fix typo in d/control.
+
+  [ Hilko Bengen ]
+  * Remove transitional package
+
+ -- Hilko Bengen <bengen@debian.org>  Mon, 14 Nov 2016 11:14:16 +0100
+
+gopacket (1.1.11-2) unstable; urgency=medium
+
+  * Fix compatibility symlink
+
+ -- Hilko Bengen <bengen@debian.org>  Thu, 29 Oct 2015 09:53:24 +0100
+
+gopacket (1.1.11-1) unstable; urgency=medium
+
+  * New upstream version
+  * Rename package, provide transitional package
+
+ -- Hilko Bengen <bengen@debian.org>  Wed, 23 Sep 2015 22:32:51 +0200
+
+gopacket (1.1.10-1) unstable; urgency=medium
+
+  * New upstream version
+  * Bumped Standards-Version
+  * Added build flag so the pfring-specific bits can be shipped in the package
+
+ -- Hilko Bengen <bengen@debian.org>  Wed, 14 Jan 2015 12:41:40 +0100
+
+gopacket (1.1.9-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Hilko Bengen <bengen@debian.org>  Tue, 18 Nov 2014 00:29:12 +0100
+
+gopacket (1.1.8-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Hilko Bengen <bengen@debian.org>  Tue, 19 Aug 2014 23:24:55 +0200
+
+gopacket (1.1.6-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Hilko Bengen <bengen@debian.org>  Thu, 31 Jul 2014 09:18:13 +0200
+
+gopacket (1.1.5-1) unstable; urgency=medium
+
+  * New upstream version
+
+ -- Hilko Bengen <bengen@debian.org>  Tue, 29 Jul 2014 17:10:16 +0200
+
+gopacket (1.1.2-1) unstable; urgency=medium
+
+  * New upstream version
+  * Added watch file
+  * Give package to Debian Go Packaging Team
+
+ -- Hilko Bengen <bengen@debian.org>  Sun, 22 Jun 2014 15:38:15 +0200
+
+gopacket (1.0.12-1) unstable; urgency=low
+
+  * Initial release (Closes: #748654)
+
+ -- Hilko Bengen <bengen@debian.org>  Fri, 16 May 2014 17:16:06 +0200

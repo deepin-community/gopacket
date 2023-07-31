@@ -1,4 +1,7 @@
 #!/usr/bin/make -f
 
+export DH_GOLANG_EXCLUDES := examples pcap/gopacket_benchmark pfring
+export DH_GOLANG_INSTALL_EXTRA := $(wildcard pcap/*.pcap) pcapgo/tests
+
 %:
-	dh $@
+	dh $@ --buildsystem=golang

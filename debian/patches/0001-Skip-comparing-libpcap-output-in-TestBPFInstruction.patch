@@ -1,0 +1,66 @@
+From: Shengjing Zhu <zhsj@debian.org>
+Date: Wed, 8 Feb 2023 15:23:06 +0800
+Subject: Skip comparing libpcap output in TestBPFInstruction
+
+The test just ensures libpcap doesn't change its bpf output
+over the time.
+
+Now libpcap 1.10.2 changes:
+
+Previously:
+
+Warning: assuming Ethernet
+(000) ldh      [12]
+(001) jeq      #0x86dd          jt 2    jf 7
+(002) ldb      [20]
+(003) jeq      #0x11            jt 10   jf 4
+(004) jeq      #0x2c            jt 5    jf 11
+(005) ldb      [54]
+(006) jeq      #0x11            jt 10   jf 11
+(007) jeq      #0x800           jt 8    jf 11
+(008) ldb      [23]
+(009) jeq      #0x11            jt 10   jf 11
+(010) ret      #262144
+(011) ret      #0
+
+Now:
+
+$ tcpdump -d udp
+Warning: assuming Ethernet
+(000) ldh      [12]
+(001) jeq      #0x800           jt 2    jf 4
+(002) ldb      [23]
+(003) jeq      #0x11            jt 10   jf 11
+(004) jeq      #0x86dd          jt 5    jf 11
+(005) ldb      [20]
+(006) jeq      #0x11            jt 10   jf 7
+(007) jeq      #0x2c            jt 8    jf 11
+(008) ldb      [54]
+(009) jeq      #0x11            jt 10   jf 11
+(010) ret      #262144
+(011) ret      #0
+
+Bug: https://github.com/google/gopacket/issues/1088
+Bug-Debian: https://bugs.debian.org/1028841
+---
+ pcap/pcap_test.go | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pcap/pcap_test.go b/pcap/pcap_test.go
+index 4ae2978..859263b 100644
+--- a/pcap/pcap_test.go
++++ b/pcap/pcap_test.go
+@@ -249,11 +249,11 @@ func TestBPFInstruction(t *testing.T) {
+ 				t.Error("expected error but didn't see one")
+ 			} else {
+ 				if len(bpf) != len(expected.BpfInstruction) {
+-					t.Errorf("expected %d instructions, got %d", len(expected.BpfInstruction), len(bpf))
++					t.Logf("expected %d instructions, got %d", len(expected.BpfInstruction), len(bpf))
+ 				}
+ 				for i := 0; i < len(bpf); i++ {
+ 					if bpf[i] != expected.BpfInstruction[i] {
+-						t.Errorf("expected instruction %d = %d, got %d", i, expected.BpfInstruction[i], bpf[i])
++						t.Logf("expected instruction %d = %d, got %d", i, expected.BpfInstruction[i], bpf[i])
+ 					}
+ 				}
+ 			}
